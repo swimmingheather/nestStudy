@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { BrandModule } from './brand/brand.module';
+import { ReplyModule } from './reply/reply.module';
 import * as Joi from '@hapi/joi'; //얘는 왜 이렇게 써야하지?
 
 @Module({
@@ -25,6 +26,7 @@ import * as Joi from '@hapi/joi'; //얘는 왜 이렇게 써야하지?
     UserModule,
     DatabaseModule,
     BrandModule,
+    ReplyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

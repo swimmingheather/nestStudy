@@ -1,1 +1,6 @@
-export class CreateContentDto {}
+export class CreateContentDto {
+  title: string;
+  description: string;
+  author: string;
+
+}

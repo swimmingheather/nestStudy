@@ -1,17 +1,25 @@
 import { CommonEntity } from '../../commom.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from "typeorm";
+import { Reply } from "../../reply/entities/reply.entity";
 
 @Entity()
 export class Content extends CommonEntity {
   @Column()
-  title: string;
+  public title: string;
 
   @Column()
-  description: string;
+  public description: string;
 
   @Column()
-  Auther: string; //Auther_id
+  public author: string; //Auther_id
 
-  @Column()
-  productList: string; //product id
+  // @Column()
+  // public productList: string;
+
+  @OneToMany(
+    () => Reply,
+    (reply: Reply) => reply.content
+  )
+  public replys?: Reply[];
+  //product id
 }

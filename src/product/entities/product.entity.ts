@@ -10,7 +10,10 @@ export class Product extends CommonEntity {
   @Column()
   public price: number;
 
-  @ManyToOne(() => Brand, (brand: Brand) => brand.products)
+  @ManyToOne(
+    () => Brand,
+    (brand: Brand) => brand.products
+  )
   public brand: Brand; //brand id
 
   @Column()

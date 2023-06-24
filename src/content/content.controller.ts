@@ -7,28 +7,14 @@ import { UpdateContentDto } from './dto/update-content.dto';
 export class ContentController {
   constructor(private readonly contentService: ContentService) {}
 
-  @Post()
-  create(@Body() createContentDto: CreateContentDto) {
-    return this.contentService.create(createContentDto);
+
+  @Post('create')
+  async createContent(@Body() createContentDto: CreateContentDto) {
+    return await this.contentService.createContent(createContentDto);
   }
 
   @Get()
-  findAll() {
-    return this.contentService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.contentService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateContentDto: UpdateContentDto) {
-    return this.contentService.update(+id, updateContentDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.contentService.remove(+id);
+  async getAllContent(){
+    return await this.contentService.getAllContent();
   }
 }
