@@ -1,6 +1,7 @@
 import { CommonEntity } from '../../commom.entity';
-import { Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
+@Entity()
 export class Content extends CommonEntity {
   @Column()
   title: string;
@@ -12,5 +13,5 @@ export class Content extends CommonEntity {
   Auther: string; //Auther_id
 
   @Column()
-  productList: [string]; //product id
+  productList: string; //product id
 }

@@ -7,28 +7,24 @@ import { UpdateProductDto } from './dto/update-product.dto';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productService.create(createProductDto);
+  // product등록 api
+ @Post('create')
+  async createProduct(@Body() createProductDto: CreateProductDto){
+    return await this.productService.createProduct(createProductDto);
+ }
+
+ //product 전체 목록 조회
+ @Get()
+  async getAllProducts(){
+    return await this.productService.getAllProducts();
+ }
+
+ //product 상세 조회(id기준)
+  @Get('/:productId')
+  async getProductById(@Param('productId') productId: string){
+    return await this.productService.getProductById(productId);
   }
 
-  @Get()
-  findAll() {
-    return this.productService.findAll();
-  }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productService.findOne(+id);
-  }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(+id, updateProductDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productService.remove(+id);
-  }
 }
